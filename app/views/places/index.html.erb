@@ -1,0 +1,39 @@
+<section id="info">
+
+			<header>
+		 		<h1><a href="#">Appetite</a></h1>
+				<h2>London's best places</h2>
+		  	</header>
+
+		  	<form action="/" method="get">
+		  		<input type="text" name="location">
+		  	</form>
+
+			<ul>
+				<% @places.each do |place| %>
+
+					<li data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>">
+		     		<h3><%= place.title %></h3>
+		        	<p><%= place.address %></p>
+
+
+		        	<% if params[:location].present? %>
+		        		<p><%= place.distance_to(params[:location]).round(1) %>km away</p>
+		        	<% end %>
+
+
+
+		      	</li>
+		      	<% end %>
+		  	</ul>
+
+
+		</section>
+
+		<section id="map"></section>
+
+
+
+
+<%= link_to "Add a place", new_place_path, class: "button" %>
+

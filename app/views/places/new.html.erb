@@ -1,0 +1,10 @@
+<h3>Add new place</h3>
+
+<%= simple_form_for @place do |form| %>
+
+	<%= form.input :title %>
+	<%= form.input :address %>
+
+	<%= form.button :submit %>
+
+<% end %>
